@@ -6,6 +6,13 @@ The system inspects incoming HTTP requests, detects common web attacks, identifi
 
 ---
 
+## 📸 Project Overview
+
+![AI-Powered WAF Security System](project-overview.png)
+
+*Architecture, dashboard, attack detection, AI anomaly detection, rate limiting, threat intelligence, logging, and technology stack overview.*
+---
+
 ## 🎯 Project Objective
 
 The main objective of this project is to develop a security layer capable of:
