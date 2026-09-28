@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI-Powered WAF Security Dashboard</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+        }
+
+        .header {
+            padding: 25px 40px;
+            background: #111827;
+            border-bottom: 1px solid #334155;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        .header p {
+            margin-top: 8px;
+            color: #94a3b8;
+        }
+
+        .container {
+            padding: 30px 40px;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 20px;
+            background: #14532d;
+            color: #86efac;
+            margin-bottom: 25px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #334155;
+        }
+
+        .card h3 {
+            margin: 0;
+            color: #94a3b8;
+            font-size: 15px;
+        }
+
+        .number {
+            font-size: 32px;
+            font-weight: bold;
+            margin-top: 12px;
+        }
+
+        .security-cards {
+            margin-top: 20px;
+        }
+
+        .section {
+            margin-top: 30px;
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #334155;
+        }
+
+        .section h2 {
+            margin-top: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 14px;
+            text-align: left;
+            border-bottom: 1px solid #334155;
+        }
+
+        th {
+            color: #94a3b8;
+        }
+
+        .severity-high {
+            color: #facc15;
+            font-weight: bold;
+        }
+
+        .severity-critical {
+            color: #ef4444;
+            font-weight: bold;
+        }
+
+        .severity-medium {
+            color: #fb923c;
+            font-weight: bold;
+        }
+
+        .severity-low {
+            color: #86efac;
+            font-weight: bold;
+        }
+
+        .action-block {
+            color: #f87171;
+            font-weight: bold;
+        }
+
+        .action-monitor {
+            color: #facc15;
+            font-weight: bold;
+        }
+
+        .no-events {
+            text-align: center;
+            color: #94a3b8;
+        }
+
+        @media (max-width: 1100px) {
+
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .container {
+                padding: 20px;
+            }
+
+            .header {
+                padding: 20px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            table {
+                font-size: 12px;
+            }
+
+            th,
+            td {
+                padding: 8px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+
+        <h1>
+            🛡️ AI-Powered WAF Security Dashboard
+        </h1>
+
+        <p>
+            Advanced Web Application Firewall & Security Monitoring System
+        </p>
+
+    </div>
+
+
+    <div class="container">
+
+        <div class="status">
+            ● WAF SYSTEM ONLINE
+        </div>
+
+
+        <!-- ================================= -->
+        <!-- MAIN STATISTICS -->
+        <!-- ================================= -->
+
+        <div class="cards">
+
+            <div class="card">
+
+                <h3>
+                    Total Requests
+                </h3>
+
+                <div
+                    class="number"
+                    id="totalRequests">
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    Blocked Requests
+                </h3>
+
+                <div
+                    class="number"
+                    id="blockedRequests">
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    Detected Attacks
+                </h3>
+
+                <div
+                    class="number"
+                    id="detectedAttacks">
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    AI Anomalies
+                </h3>
+
+                <div
+                    class="number"
+                    id="aiAnomalies">
+                    0
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================= -->
+        <!-- SECURITY MONITORING -->
+        <!-- ================================= -->
+
+        <div class="cards security-cards">
+
+            <div class="card">
+
+                <h3>
+                    🌐 Threat Intelligence
+                </h3>
+
+                <div
+                    class="number"
+                    id="threatIntelligence">
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    🚫 Blocked IP Events
+                </h3>
+
+                <div
+                    class="number"
+                    id="blockedIpEvents">
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    ⚡ Rate Limit Blocks
+                </h3>
+
+                <div
+                    class="number"
+                    id="rateLimitEvents">
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    🔐 Security Events
+                </h3>
+
+                <div
+                    class="number"
+                    id="securityEvents">
+                    0
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================= -->
+        <!-- RECENT SECURITY EVENTS -->
+        <!-- ================================= -->
+
+        <div class="section">
+
+            <h2>
+                Recent Security Events
+            </h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Time
+                        </th>
+
+                        <th>
+                            Source IP
+                        </th>
+
+                        <th>
+                            Attack Type
+                        </th>
+
+                        <th>
+                            Severity
+                        </th>
+
+                        <th>
+                            Action
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="eventsTable">
+
+                    <tr>
+
+                        <td
+                            colspan="5"
+                            class="no-events">
+
+                            Loading security events...
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        async function loadDashboardData() {
+
+            try {
+
+                const response =
+                    await fetch("/api/stats");
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Failed to fetch dashboard data"
+                    );
+
+                }
+
+
+                const data =
+                    await response.json();
+
+
+                // =================================
+                // MAIN STATISTICS
+                // =================================
+
+                document.getElementById(
+                    "totalRequests"
+                ).textContent =
+                    data.total_requests;
+
+
+                document.getElementById(
+                    "blockedRequests"
+                ).textContent =
+                    data.blocked_requests;
+
+
+                document.getElementById(
+                    "detectedAttacks"
+                ).textContent =
+                    data.detected_attacks;
+
+
+                document.getElementById(
+                    "aiAnomalies"
+                ).textContent =
+                    data.ai_anomalies;
+
+
+                // =================================
+                // SECURITY STATISTICS
+                // =================================
+
+                document.getElementById(
+                    "threatIntelligence"
+                ).textContent =
+                    data.threat_intelligence_events || 0;
+
+
+                document.getElementById(
+                    "blockedIpEvents"
+                ).textContent =
+                    data.blocked_ip_events || 0;
+
+
+                document.getElementById(
+                    "rateLimitEvents"
+                ).textContent =
+                    data.rate_limit_events || 0;
+
+
+                document.getElementById(
+                    "securityEvents"
+                ).textContent =
+                    data.recent_events
+                        ? data.recent_events.length
+                        : 0;
+
+
+                // =================================
+                // SECURITY EVENTS TABLE
+                // =================================
+
+                const table =
+                    document.getElementById(
+                        "eventsTable"
+                    );
+
+
+                table.innerHTML = "";
+
+
+                if (
+                    !data.recent_events ||
+                    data.recent_events.length === 0
+                ) {
+
+                    table.innerHTML = `
+                        <tr>
+                            <td
+                                colspan="5"
+                                class="no-events">
+                                No security events detected
+                            </td>
+                        </tr>
+                    `;
+
+                    return;
+                }
+
+
+                data.recent_events.forEach(
+                    event => {
+
+                        const row =
+                            document.createElement(
+                                "tr"
+                            );
+
+
+                        const time =
+                            event.timestamp
+                                ? new Date(
+                                    event.timestamp
+                                ).toLocaleTimeString()
+                                : "-";
+
+
+                        let severityClass =
+                            "severity-low";
+
+
+                        if (
+                            event.severity ===
+                            "CRITICAL"
+                        ) {
+
+                            severityClass =
+                                "severity-critical";
+
+                        }
+
+                        else if (
+                            event.severity ===
+                            "HIGH"
+                        ) {
+
+                            severityClass =
+                                "severity-high";
+
+                        }
+
+                        else if (
+                            event.severity ===
+                            "MEDIUM"
+                        ) {
+
+                            severityClass =
+                                "severity-medium";
+
+                        }
+
+
+                        const actionClass =
+                            event.action ===
+                            "BLOCK"
+                                ? "action-block"
+                                : "action-monitor";
+
+
+                        row.innerHTML = `
+
+                            <td>
+                                ${time}
+                            </td>
+
+                            <td>
+                                ${event.source_ip || "-"}
+                            </td>
+
+                            <td>
+                                ${event.attack_type || "-"}
+                            </td>
+
+                            <td
+                                class="${severityClass}">
+                                ${event.severity || "-"}
+                            </td>
+
+                            <td
+                                class="${actionClass}">
+                                ${event.action || "-"}
+                            </td>
+
+                        `;
+
+
+                        table.appendChild(row);
+
+                    }
+                );
+
+            }
+
+
+            catch (error) {
+
+                console.error(
+                    "Dashboard error:",
+                    error
+                );
+
+            }
+
+        }
+
+
+        // =================================
+        // INITIAL LOAD
+        // =================================
+
+        loadDashboardData();
+
+
+        // =================================
+        // AUTO REFRESH
+        // =================================
+
+        setInterval(
+            loadDashboardData,
+            5000
+        );
+
+    </script>
+
+</body>
+</html>
